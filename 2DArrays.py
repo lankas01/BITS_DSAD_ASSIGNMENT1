@@ -1,3 +1,5 @@
+# An example to demonstrate the 2D Array in Python
+
 edges=[]
 
 edges.append(["F1","P1"])

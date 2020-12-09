@@ -1,4 +1,3 @@
-from string import ascii_letters
 
 print ("hello world")
 players = []

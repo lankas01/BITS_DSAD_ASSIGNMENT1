@@ -28,7 +28,6 @@ print ("4th franchise  is : " , franchise[3])
 
 print ("--------------------------------" , " The Players are ", "-----------------")    
 
-
 for tmp_association in associations:
     match = 0
     for tmp_player in players:
@@ -42,7 +41,6 @@ print (players)
 print ("--------------------------------" , " The franchises are ", "-----------------")   
 print ("no of franchises are : " , len(franchise))
 print (franchise)
-
 
 print ("--------------------------------" , " The franchises associations of BenStokes are  ", "-----------------")   
 
@@ -70,7 +68,8 @@ for tmp_fran in tmp_frans:
 
 #Can two players A and B be connected such that there exists another player C 
 #         where A and C are franchise buddies and C and B are franchise buddies.
-# Step 1 : Buddies of A and Buddies of B.
+# Step 1 : Association of A and get players those association - to get buddies of A
+# Step 2 : Buddies of A and Buddies of B.
 # Step 2 : Match the buddies , if does , print the player 
 
 print ("--------------------------------" , " Buddies of  GlennMaxwel  ", "-----------------")   

@@ -1,6 +1,6 @@
 
 
-PlayerTeam = []
+PlayerTeam = []#I'm starting now#
 edges = [["F1"],["P1","p2","p3"]]
     
 #edges.append()

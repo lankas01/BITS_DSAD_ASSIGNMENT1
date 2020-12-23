@@ -2,7 +2,7 @@ print ("hello world")
 # https://stackoverflow.com/questions/903853/how-do-you-extract-a-column-from-a-multi-dimensional-array
 class IPL:
    PlayerTeam=[]    
-   associations=[[],[]]
+   edges=[[],[]]
   
    def readInputfile(self,inputfile):
      f = open( inputfile , "r")
@@ -16,15 +16,15 @@ class IPL:
        counter = 1
        for a in pt:
           if counter > 1 :   
-            self.associations.append([pt[0].replace(' ',''),a.replace('\n','').replace(' ','')])
+            self.edges.append([pt[0].replace(' ',''),a.replace('\n','').replace(' ','')])
           else :
             counter = counter + 1
 
    def displayAll(self):
-      print(ipl.associations)   
-      print("No of Teams : "  , len(ipl.PlayerTeam))
-      print ("4th Team is : " , ipl.PlayerTeam[3])
-      print ("4th franchise  is : " , ipl.franchise[3])
+      print(ipl.edges)   
+   #   print("No of Teams : "  , len(ipl.PlayerTeam))
+   #   print ("4th Team is : " , ipl.PlayerTeam[3])
+   #   print ("4th franchise  is : " , ipl.franchise[3])
    
       
       print ("--------------------------------" , " The franchises are ", "-----------------")   
@@ -32,7 +32,7 @@ class IPL:
       print (ipl.franchise)
       
       print ("--------------------------------" , " The Players are ", "-----------------")    
-      for tmp_association in ipl.associations:
+      for tmp_association in ipl.edges:
           match = 0
           for tmp_player in ipl.players:
               if (tmp_association[1] == tmp_player) :
@@ -44,26 +44,26 @@ class IPL:
  
    def displayFranchises(self,player):
        tmpFranchises = []
-       for tmp_association in ipl.associations:
+       for tmp_association in ipl.edges:
             if (tmp_association[1] == player ) :
                   tmpFranchises.append(tmp_association[0])
        return tmpFranchises
 
    def displayPlayers(self,franchise):
       tmpPlayers = []
-      for tmp_association in ipl.associations:
+      for tmp_association in ipl.edges:
          if (tmp_association[0] == 'SRH'):
            tmpPlayers.append(tmp_association[1])
       return tmpPlayers
 
    def franchiseBuddies(self, playerA, playerB):
        tmp_frans = []
-       for tmp_association in self.associations:
+       for tmp_association in self.edges:
             if (tmp_association[1] == playerA ) :
                         tmp_frans.append(tmp_association[0])
 
        for tmp_fran in tmp_frans:
-            for tmp_association in self.associations:
+            for tmp_association in self.edges:
                   if (tmp_association[1] == playerB and tmp_association[0] == tmp_fran ) :
                    print ( "yes , in the franchise : " ,  tmp_fran )
                    return tmp_fran 
@@ -75,20 +75,20 @@ class IPL:
         Buddies_A = []
         Buddies_B = []
 
-        for tmp_association in self.associations:
+        for tmp_association in self.edges:
             if (tmp_association[1] == playerA) :
                FRA_A.append(tmp_association[0])
             if (tmp_association[1] == playerB) :
                FRA_B.append(tmp_association[0])
 
         for tmp_FRA_A in FRA_A:
-            for tmp_association in self.associations:
+            for tmp_association in self.edges:
                 if (tmp_association[0] == tmp_FRA_A )  :
                     Buddies_A.append(tmp_association[1])
 
 
             for tmp_FRA_B in FRA_B:
-                  for tmp_association in self.associations:
+                  for tmp_association in self.edges:
                     if (tmp_association[0] == tmp_FRA_B )  :
                         Buddies_B.append(tmp_association[1])   
 

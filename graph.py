@@ -17,11 +17,13 @@ for x in PlayerTeam:
   pt =  x.split("/")   
 
   counter1D = 1   # to remove space for each player due to reading the CSV , no space for Franchise 
-  frachises.append(pt[0].replace(' ',''))
+  frachise = pt[0].replace(' ','')
+  frachises.append(frachise)
   
   for a in pt:
-    if counter1D > 1 :   
-        associations.append([a.replace('\n','').replace(' ',''), pt[0].replace(' ','')])
+    if counter1D > 1 :
+        player = a.replace('\n','').replace(' ','')
+        associations.append([player, frachise ])
       
     else :
         counter1D = counter1D + 1  
@@ -99,6 +101,13 @@ def getNeighbours(vertex):
             #  print (i[1:len(i)]  )
              return i[1:len(i)]
 
+
+S = "PYYY"
+D = "PUUU"
+
+
+
+
 # traversal  - find path between 2 players 
 print (".................   Traversal between - KedarJadhav  and  IshanKishan  are  ..................")  
 print()
@@ -110,11 +119,11 @@ visited = []   # List to keep track of visited nodes.
 # queue.append("KedarJadhav")
 # visited.append("KedarJadhav")  
 
-queue.append("KrunalPandya")
-visited.append("KrunalPandya")
+# queue.append("KrunalPandya")
+# visited.append("KrunalPandya")
 
-
-
+queue.append(S)
+visited.append(S)
 
     # Get all adjacent vertices of the
     # dequeued vertex s. If a adjacent
@@ -154,12 +163,55 @@ print()
 # traversal  - find path between 2 players  with parent 
 print (".................   Traversal between - KedarJadhav  and  IshanKishan  with parent    ..................")  
 print(parent)
+print()
+print()   
 
-# queue1 = []     # Initialize a queue
-# visited1 = []   # List to keep track of visited nodes.
+
+PATH = []
+
+PATH.append(D) 
+
+for p in PATH:
+  if p == S:
+    break
+  for i in parent:
+      if i[0] == p:
+            PATH.append(i[1])
+          #  print (D ,"child is " , i[1])
+print (PATH)  
+
+print()
+print()      
+
+if len(PATH)  == 3 :
+  print ("Yes , " ,  S , " and " , D ,"are Buddies" )         
+elif len(PATH)  == 5 :          
+  print ("Yes , " ,  S , " and " , D ,"are player connect  : " ) 
+  PATH.reverse()
+  print  (PATH)  
+elif len(PATH) <= 1:
+   print ("Yes , " ,  D , " and " , S ,"are not  associated : " , PATH )   
+   
+else :
+      print ("Yes , " ,  D , " and " , S ,"are long distance associated : " , PATH )   
+      
+          
+      # if i[0] == S:    
+      #          PATH.append(i[1])
+      #          break
+      # if i[0] == "MI":
+      #    print ("MI child is :" , i[1])     
+      # if i[0] == "KrunalPandy":
+      #   print ("KrunalPandy child is :" , i[1])     
+      
+
+# print (".................  DFS Traversal between - KedarJadhav  and  IshanKishan      ..................")  
+
+# queueD = []     # Initialize a queue
+# visitedD = []   # List to keep track of visited nodes.
 
 # queue1.append("KedarJadhav")
-# visited1 = []
+
 # path = []
 # while queue1:
 #         path.append(queue1.pop(0))

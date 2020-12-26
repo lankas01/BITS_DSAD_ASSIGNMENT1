@@ -1,0 +1,5 @@
+--------------------------------  Display IPL Graph  -----------------
+Total no of franchises : 10
+Total no of player : 27
+-------------------------------- Are KedarJadhav and IshanKishan a franchises - buddies  -----------------
+No , KedarJadhav and IshanKishan are Not Buddies 

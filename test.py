@@ -24,5 +24,12 @@ print(var1)
 ipl.printList.insert(len(ipl.printList), var1)
 ipl.writeIntoOutFile(ipl.printList,"outputPS28.txt","Y")
 
-
+try:
+    f=open("mix1.txt","r");
+except:
+    print("File not found")
+    quit()
+    
+    
+print("proceeding")
 

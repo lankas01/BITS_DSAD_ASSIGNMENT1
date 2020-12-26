@@ -1,5 +1,113 @@
 --------------------------------  Display IPL Graph  -----------------
-Total no of franchises : 10
-Total no of player : 27
--------------------------------- Are KedarJadhav and IshanKishan a franchises - buddies  -----------------
-No , KedarJadhav and IshanKishan are Not Buddies 
+--------Function displayAll --------
+Total no. of franchises: 10
+Total no. of player: 27
+
+List of franchises:
+RR
+KXIP
+KKR
+SRH
+MI
+CSK
+RCB
+DD
+GL
+RPS
+
+List of players:
+BenStokes
+JaydevUnadkat
+SanjuSamson
+JofraArcher
+GKrishnappa
+GlennMaxwell
+KLRahul
+RAshwin
+AndrewTye
+MarcusStoinis
+ChrisLynn
+MitchellStarc
+DineshKarthik
+RobinUthappa
+ManishPandey
+ChrisWoakes
+RashidKhan
+ShikharDhawan
+KrunalPandya
+IshanKishan
+KieronPollard
+KedarJadhav
+DwayneBravo
+KarnSharma
+YuzvendraChahal
+UmeshYadav
+KarunNair
+
+--------Function displayFranchises --------
+Player name: BenStokes
+List of Franchises: 
+RR
+RPS
+
+--------Function displayFranchises --------
+Player name: RobinUthappa
+List of Franchises: 
+KKR
+
+--------Function displayFranchises --------
+Player name: MIXI
+List of Franchises: 
+Player MIXI is not assosciated with any Franchise
+
+--------Function displayPlayers --------
+Franchise name: RR
+List of Players: 
+BenStokes
+JaydevUnadkat
+SanjuSamson
+JofraArcher
+GKrishnappa
+GlennMaxwell
+
+--------Function displayPlayers --------
+Franchise name: SRH
+List of Players: 
+ManishPandey
+RashidKhan
+ShikharDhawan
+
+--------Function displayPlayers --------
+Franchise name: TESTFRANCHISE
+List of Players: 
+Invalid Franchise : TESTFRANCHISE or No Player is assosciated with the Franchise
+
+--------Function franchiseBuddies --------
+Player A: KrunalPandya
+Player B: KieronPollard
+
+Yes , KrunalPandya and KieronPollard are Buddies  via MI
+
+--------Function franchiseBuddies --------
+Player A: MAX
+Player B: MIX
+
+Invalid Player Name MAX or Player is not assoscited with any Franchise
+
+--------Function franchiseBuddies --------
+Player A: BenStokes
+Player B: KrunalPandya
+
+No , BenStokes and KrunalPandya are Not Buddies 
+
+--------Function findPlayerConnect --------
+Player A: KedarJadhav
+Player B: IshanKishan
+
+Related: Yes, KedarJadhav > CSK > DwayneBravo > GL > IshanKishan
+
+--------Function findPlayerConnect --------
+Player A: MitchellStarc
+Player B: GKrishnappa
+
+MitchellStarc and GKrishnappa are not connected

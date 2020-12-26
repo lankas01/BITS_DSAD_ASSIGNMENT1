@@ -1,4 +1,5 @@
-#print (".............. IPL Bench : DSE 2020 SEC 4 - Group 280 : Assignment Solution  ........................ ")
+import os
+print (".............. IPL Bench : DSE 2020 SEC 4 - Group 280 : Assignment Solution  ........................ ")
 
 class IPL:
    PlayerTeam=[]    
@@ -8,15 +9,11 @@ class IPL:
    associations = []
    printList = []
   
-   def clearFileData(self,fileName):
-      f=open(fileName,"w");
-      f.write("")
-      f.close()
-
    def writeIntoOutFile(self,printLocList,fileName,clearFileReq):
 
       if (clearFileReq == "Y"):
-         ipl.clearFileData(fileName)
+         if (os.path.exists(fileName)):
+            os.remove(fileName)
 
       for x in printLocList:
          print(x)
@@ -33,14 +30,7 @@ class IPL:
       self.PlayerTeam.append(x)
      f.close()
    
-   def validatePlayerName(self,pName):
-      try:
-         tmp = ipl.players.index(pName)
-         return "SUCCESS"
-      except:
-         return "Invalid Player Name " + pName + " or Player is not assoscited with any Franchise"
-
-   def generateAssociations(self):
+   def generateAssociations(self):   
      for x in self.PlayerTeam:
        pt =  x.split("/")
        
@@ -116,124 +106,35 @@ class IPL:
    def displayAll(self):
          
       #print ("no of franchises are : " , len(self.franchises))
-      #print (self.franchises)
+      print (self.franchises)
             
       #print ("no of player : " , len(self.players))
-      #print (self.players)
+      print (self.players)
       
-      #print ("--------------------------------" , " The Adjency List  ", "-----------------")     
-      #print(self.edges)
-      #print ("--------------------------------" ,  "-----------------")     
+      print ("--------------------------------" , " The Adjency List  ", "-----------------")     
+      print(self.edges)
+      print ("--------------------------------" ,  "-----------------")     
 
       ipl.printList.clear()
-      var1 = "--------Function displayAll --------"
+      var1 = "Total no of franchises : " + str(len(self.franchises));
       ipl.printList.insert(len(ipl.printList), var1)
-      var1 = "Total no. of franchises: " + str(len(self.franchises));
+      var1 = "Total no of player : " + str(len(self.players))
       ipl.printList.insert(len(ipl.printList), var1)
-      var1 = "Total no. of player: " + str(len(self.players))
-      ipl.printList.insert(len(ipl.printList), var1)
-      var1 = "\nList of franchises:"
-      ipl.printList.insert(len(ipl.printList), var1)
-      ipl.printList = ipl.printList + self.franchises 
-      var1 = "\nList of players:"
-      ipl.printList.insert(len(ipl.printList), var1)
-      ipl.printList = ipl.printList + self.players
+      
       ipl.writeIntoOutFile(ipl.printList,"outputPS28.txt","N")
 
 
-      try:
-         f=open("promptsPS28.txt","r");
-      except:
-         print("promptsPS28.txt File not found")
-         quit()
-      
-      for x in f:
-
-         #--------Call Function displayFranchises --------
-         if(x.find('findFranchise:') >= 0):
-            plyrNam = x.split("findFranchise:")[1].strip().replace(" ","")
-            ipl.printList.clear()
-            var1 = "\n--------Function displayFranchises --------"
-            ipl.printList.insert(len(ipl.printList), var1)
-            var1 = "Player name: " + plyrNam
-            ipl.printList.insert(len(ipl.printList), var1)
-            var1 = "List of Franchises: \n" + ipl.getStringFromList(ipl.displayFranchises(plyrNam))
-            ipl.printList.insert(len(ipl.printList), var1)
-            ipl.writeIntoOutFile(ipl.printList,"outputPS28.txt","N")
-         
-         #--------Call Function displayPlayers --------
-         if(x.find('listPlayers:') >= 0):
-            frnchNam = x.split("listPlayers:")[1].strip().replace(" ","")
-            ipl.printList.clear()
-            var1 = "\n--------Function displayPlayers --------"
-            ipl.printList.insert(len(ipl.printList), var1)
-            var1 = "Franchise name: " + frnchNam
-            ipl.printList.insert(len(ipl.printList), var1)
-            var1 = "List of Players: \n" + ipl.getStringFromList(ipl.displayPlayers(frnchNam))
-            ipl.printList.insert(len(ipl.printList), var1)
-            ipl.writeIntoOutFile(ipl.printList,"outputPS28.txt","N")
-
-         #--------Call Function franchiseBuddies --------
-         if(x.find('franchiseBuddies:') >= 0):            
-            plyrNms = x.split("franchiseBuddies:")[1].strip().replace(" ","")
-            plyrNmA = plyrNms.split(":")[0]
-            plyrNmB = plyrNms.split(":")[1]
-            ipl.printList.clear()
-            var1 = "\n--------Function franchiseBuddies --------"
-            ipl.printList.insert(len(ipl.printList), var1)
-            var1 = "Player A: " + plyrNmA
-            ipl.printList.insert(len(ipl.printList), var1)
-            var1 = "Player B: " + plyrNmB + "\n"
-            ipl.printList.insert(len(ipl.printList), var1)
-            var1 = ipl.franchiseBuddies(plyrNmA,plyrNmB)
-            ipl.printList.insert(len(ipl.printList), var1)
-            ipl.writeIntoOutFile(ipl.printList,"outputPS28.txt","N")
-
-         #--------Call Function findPlayerConnect --------
-         if(x.find('playerConnect:') >= 0):
-            plyrNms = x.split("playerConnect:")[1].strip().replace(" ","")
-            plyrNmA = plyrNms.split(":")[0]
-            plyrNmB = plyrNms.split(":")[1]
-            ipl.printList.clear()
-            var1 = "\n--------Function findPlayerConnect --------"
-            ipl.printList.insert(len(ipl.printList), var1)
-            var1 = "Player A: " + plyrNmA
-            ipl.printList.insert(len(ipl.printList), var1)
-            var1 = "Player B: " + plyrNmB + "\n"
-            ipl.printList.insert(len(ipl.printList), var1)
-
-            var1 = ipl.findPlayerConnect(plyrNmA,plyrNmB)
-            ipl.printList.insert(len(ipl.printList), var1)
-            ipl.writeIntoOutFile(ipl.printList,"outputPS28.txt","N")
-
-
-
-
-   def getStringFromList(self,locList):
-      tempStr = ""
-      for x in locList:
-         if(len(tempStr)>0):
-            tempStr = tempStr + "\n" + x
-         else:
-            tempStr = tempStr + x
-      return tempStr
-
    def displayFranchises(self,player):
-      for tmp_edges in self.edges:
-         if (tmp_edges[0] == player ) :
-            print("Player " + player + " " + str(tmp_edges[1:len(tmp_edges)]))
-            return (tmp_edges[1:len(tmp_edges)])
-      
-      tmpLst = ["Player " + player + " is not assosciated with any Franchise"]   
-      return (tmpLst)
+         for tmp_edges in self.edges:
+            if (tmp_edges[0] == player ) :
+                  return (tmp_edges[1:len(tmp_edges)])
     
-   def displayPlayers(self, franchise):
+
+   def displayPlayers(self,franchise):
       for tmp_edges in self.edges:
          if (tmp_edges[0] == franchise):
            return (tmp_edges[1:len(tmp_edges)])
-      
-      tmpLst = ["Invalid Franchise : " + franchise + " or No Player is assosciated with the Franchise"]   
-      return (tmpLst)
+
 
    def getNeighbours(self,vertex):
       for i in self.edges:
@@ -306,49 +207,41 @@ class IPL:
                break
             for i in parent:
                   if i[0] == p:
-                        PATH.append(i[1])           
-         return (PATH)
+                        PATH.append(i[1])
+            
+         return (PATH)  
     
+
+
+ 
+
    def franchiseBuddies(self, playerA, playerB):
-      
-      #-- Validate Player Names
-      tmpStatus = ipl.validatePlayerName(playerA)
-      if ( tmpStatus != "SUCCESS"): return tmpStatus
-      tmpStatus = ipl.validatePlayerName(playerB)
-      if ( tmpStatus != "SUCCESS"): return tmpStatus
-
-
       TMPPATH = self.bfs_traversal(playerA,playerB)
       # print()
       # print("The PATH ......................")
       # print (TMPPATH)
       if len(TMPPATH)  == 3 :
+         
          #print ("Yes , " ,  playerA , " and " , playerB , " are Buddies " ,  " via " , TMPPATH[1] ) 
+         ipl.printList.clear()
          var1 = "Yes , " +  playerA + " and " + playerB + " are Buddies " +  " via " + TMPPATH[1]
-         return var1
-
+         ipl.printList.insert(len(ipl.printList), var1)
+         ipl.writeIntoOutFile(ipl.printList,"outputPS28.txt","N")
       else :
          #print ("No , " ,  playerA , " and " , playerB , " are Not Buddies" )
+         ipl.printList.clear()
          var1 = "No , " +  playerA + " and " + playerB + " are Not Buddies "
-         return var1   
+         ipl.printList.insert(len(ipl.printList), var1)
+         ipl.writeIntoOutFile(ipl.printList,"outputPS28.txt","N")
+            
                
    def findPlayerConnect(self, playerA, playerB):
-
-      #-- Validate Player Names
-      tmpStatus = ipl.validatePlayerName(playerA)
-      if ( tmpStatus != "SUCCESS"): return tmpStatus
-      tmpStatus = ipl.validatePlayerName(playerB)
-      if ( tmpStatus != "SUCCESS"): return tmpStatus
-
-      TMPPATH = self.bfs_traversal(playerA,playerB)
-      if len(TMPPATH)  == 5 :
-         TMPPATH.reverse()
-         #print ("Yes , " ,  playerA , " and " , playerB,"are player connect " ,  "via" , TMPPATH )     
-         return "Related: Yes, " + " > ".join(TMPPATH)
-      
-      return playerA + " and " + playerB + " are not connected"
-
-   
+         TMPPATH = self.bfs_traversal(playerA,playerB)
+         if len(TMPPATH)  == 5 :
+            TMPPATH.reverse()
+            print ("Yes , " ,  playerA , " and " , playerB,"are player connect " ,  "via" , TMPPATH )      
+            
+         
 
 ipl = IPL()
        
@@ -382,18 +275,18 @@ ipl.displayAll()
 
 #print ("--------------------------------" , " Are KedarJadhav and IshanKishan a franchises - buddies  ", "-----------------")
 
-# ipl.printList.clear()
-# var1 = "-------------------------------- Are KedarJadhav and IshanKishan a franchises - buddies  -----------------"
-# ipl.printList.insert(len(ipl.printList), var1)
-# ipl.writeIntoOutFile(ipl.printList,"outputPS28.txt","N")
+ipl.printList.clear()
+var1 = "-------------------------------- Are KedarJadhav and IshanKishan a franchises - buddies  -----------------"
+ipl.printList.insert(len(ipl.printList), var1)
+ipl.writeIntoOutFile(ipl.printList,"outputPS28.txt","N")
 
-# ipl.franchiseBuddies( "KedarJadhav" , "IshanKishan")
+ipl.franchiseBuddies( "KedarJadhav" , "IshanKishan")
 
 
-# #print ("--------------------------------" , " Are there any connected players between -  KedarJadhav and IshanKishan  ", "-----------------")   
-# ipl.printList.clear()
-# var1 = "-------------------------------- Are there any connected players between -  KedarJadhav and IshanKishan  -----------------"
-# ipl.printList.insert(len(ipl.printList), var1)
-# ipl.writeIntoOutFile(ipl.printList,"outputPS28..txt","N")
+#print ("--------------------------------" , " Are there any connected players between -  KedarJadhav and IshanKishan  ", "-----------------")   
+ipl.printList.clear()
+var1 = "-------------------------------- Are there any connected players between -  KedarJadhav and IshanKishan  -----------------"
+ipl.printList.insert(len(ipl.printList), var1)
+ipl.writeIntoOutFile(ipl.printList,"outputPS28..txt","N")
 
-# ipl.findPlayerConnect( "KedarJadhav", "IshanKishan")
+ipl.findPlayerConnect( "KedarJadhav", "IshanKishan")

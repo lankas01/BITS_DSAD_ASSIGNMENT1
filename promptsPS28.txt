@@ -1,0 +1,11 @@
+findFranchise: Ben Stokes
+findFranchise: Robin Uthappa
+findFranchise: MIXI
+listPlayers: RR
+listPlayers: SRH
+listPlayers: TESTFRANCHISE
+franchiseBuddies: Krunal Pandya : Kieron Pollard
+franchiseBuddies: MAX : MIX
+franchiseBuddies: Ben Stokes : Krunal Pandya
+playerConnect: Kedar Jadhav : Ishan Kishan
+playerConnect: Mitchell Starc : G Krishnappa

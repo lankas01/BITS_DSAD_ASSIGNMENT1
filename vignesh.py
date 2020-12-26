@@ -50,8 +50,6 @@ class IPL:
        
        for a in pt:
           if counter > 1 :
-
-            #player = a.replace('\n','').replace(' ','')
             player = a.strip()            
             self.associations.append([franchise,player])           
             
@@ -102,16 +100,6 @@ class IPL:
      
  
    def displayAll(self):
-         
-      #print ("no of franchises are : " , len(self.franchises))
-      #print (self.franchises)
-            
-      #print ("no of player : " , len(self.players))
-      #print (self.players)
-      
-      #print ("--------------------------------" , " The Adjency List  ", "-----------------")     
-      #print(self.edges)
-      #print ("--------------------------------" ,  "-----------------")     
 
       ipl.printList.clear()
       var1 = "--------Function displayAll --------"
@@ -138,61 +126,79 @@ class IPL:
       for x in f:
 
          #--------Call Function displayFranchises --------
-         if(x.find('findFranchise:') >= 0):            
-            plyrNam = x.split("findFranchise:")[1].strip()
-            ipl.printList.clear()
-            var1 = "\n--------Function displayFranchises --------"
-            ipl.printList.insert(len(ipl.printList), var1)
-            var1 = "Player name: " + plyrNam
-            ipl.printList.insert(len(ipl.printList), var1)
-            var1 = "List of Franchises: \n" + ipl.getStringFromList(ipl.displayFranchises(plyrNam))
-            ipl.printList.insert(len(ipl.printList), var1)
-            ipl.writeIntoOutFile(ipl.printList,"outputPS28.txt","N")
-         
+         if(x.find('findFranchise:') >= 0):
+            ipl.findFranchise(x)
+
          #--------Call Function displayPlayers --------
-         if(x.find('listPlayers:') >= 0):            
-            frnchNam = x.split("listPlayers:")[1].strip()
-            ipl.printList.clear()
-            var1 = "\n--------Function displayPlayers --------"
-            ipl.printList.insert(len(ipl.printList), var1)
-            var1 = "Franchise name: " + frnchNam
-            ipl.printList.insert(len(ipl.printList), var1)
-            var1 = "List of Players: \n" + ipl.getStringFromList(ipl.displayPlayers(frnchNam))
-            ipl.printList.insert(len(ipl.printList), var1)
-            ipl.writeIntoOutFile(ipl.printList,"outputPS28.txt","N")
+         if(x.find('listPlayers:') >= 0):
+            ipl.listPlayers(x)
 
          #--------Call Function franchiseBuddies --------
-         if(x.find('franchiseBuddies:') >= 0):                        
-            plyrNms = x.split("franchiseBuddies:")[1].strip()
-            plyrNmA = plyrNms.split(":")[0].strip()
-            plyrNmB = plyrNms.split(":")[1].strip()
-            ipl.printList.clear()
-            var1 = "\n--------Function franchiseBuddies --------"
-            ipl.printList.insert(len(ipl.printList), var1)
-            var1 = "Player A: " + plyrNmA
-            ipl.printList.insert(len(ipl.printList), var1)
-            var1 = "Player B: " + plyrNmB + "\n"
-            ipl.printList.insert(len(ipl.printList), var1)
-            var1 = ipl.franchiseBuddies(plyrNmA,plyrNmB)
-            ipl.printList.insert(len(ipl.printList), var1)
-            ipl.writeIntoOutFile(ipl.printList,"outputPS28.txt","N")
+         if(x.find('franchiseBuddies:') >= 0):
+            ipl.findFranchiseBuddies(x)
 
          #--------Call Function findPlayerConnect --------
-         if(x.find('playerConnect:') >= 0):            
-            plyrNms = x.split("playerConnect:")[1].strip()
-            plyrNmA = plyrNms.split(":")[0].strip()
-            plyrNmB = plyrNms.split(":")[1].strip()
-            ipl.printList.clear()
-            var1 = "\n--------Function findPlayerConnect --------"
-            ipl.printList.insert(len(ipl.printList), var1)
-            var1 = "Player A: " + plyrNmA
-            ipl.printList.insert(len(ipl.printList), var1)
-            var1 = "Player B: " + plyrNmB + "\n"
-            ipl.printList.insert(len(ipl.printList), var1)
+         if(x.find('playerConnect:') >= 0):
+            ipl.playerConnect(x)
 
-            var1 = ipl.findPlayerConnect(plyrNmA,plyrNmB)
-            ipl.printList.insert(len(ipl.printList), var1)
-            ipl.writeIntoOutFile(ipl.printList,"outputPS28.txt","N")
+   def findFranchise(self,promptFileLine):
+      x= promptFileLine
+      plyrNam = x.split("findFranchise:")[1].strip()
+      ipl.printList.clear()
+      var1 = "\n--------Function displayFranchises --------"
+      ipl.printList.insert(len(ipl.printList), var1)
+      var1 = "Player name: " + plyrNam
+      ipl.printList.insert(len(ipl.printList), var1)
+      var1 = "List of Franchises: \n" + ipl.getStringFromList(ipl.displayFranchises(plyrNam))
+      ipl.printList.insert(len(ipl.printList), var1)
+      ipl.writeIntoOutFile(ipl.printList,"outputPS28.txt","N")
+
+   def listPlayers(self,promptFileLine):
+      x= promptFileLine
+      frnchNam = x.split("listPlayers:")[1].strip()
+      ipl.printList.clear()
+      var1 = "\n--------Function displayPlayers --------"
+      ipl.printList.insert(len(ipl.printList), var1)
+      var1 = "Franchise name: " + frnchNam
+      ipl.printList.insert(len(ipl.printList), var1)
+      var1 = "List of Players: \n" + ipl.getStringFromList(ipl.displayPlayers(frnchNam))
+      ipl.printList.insert(len(ipl.printList), var1)
+      ipl.writeIntoOutFile(ipl.printList,"outputPS28.txt","N")
+
+   def findFranchiseBuddies(self,promptFileLine):
+      x= promptFileLine
+      plyrNms = x.split("franchiseBuddies:")[1].strip()
+      plyrNmA = plyrNms.split(":")[0].strip()
+      plyrNmB = plyrNms.split(":")[1].strip()
+      ipl.printList.clear()
+      var1 = "\n--------Function franchiseBuddies --------"
+      ipl.printList.insert(len(ipl.printList), var1)
+      var1 = "Player A: " + plyrNmA
+      ipl.printList.insert(len(ipl.printList), var1)
+      var1 = "Player B: " + plyrNmB + "\n"
+      ipl.printList.insert(len(ipl.printList), var1)
+      var1 = ipl.franchiseBuddies(plyrNmA,plyrNmB)
+      ipl.printList.insert(len(ipl.printList), var1)
+      ipl.writeIntoOutFile(ipl.printList,"outputPS28.txt","N")
+
+
+   def playerConnect(self,promptFileLine):
+      x= promptFileLine
+      plyrNms = x.split("playerConnect:")[1].strip()
+      plyrNmA = plyrNms.split(":")[0].strip()
+      plyrNmB = plyrNms.split(":")[1].strip()
+      ipl.printList.clear()
+      var1 = "\n--------Function findPlayerConnect --------"
+      ipl.printList.insert(len(ipl.printList), var1)
+      var1 = "Player A: " + plyrNmA
+      ipl.printList.insert(len(ipl.printList), var1)
+      var1 = "Player B: " + plyrNmB + "\n"
+      ipl.printList.insert(len(ipl.printList), var1)
+
+      var1 = ipl.findPlayerConnect(plyrNmA,plyrNmB)
+      ipl.printList.insert(len(ipl.printList), var1)
+      ipl.writeIntoOutFile(ipl.printList,"outputPS28.txt","N")
+
 
    def getStringFromList(self,locList):
       tempStr = ""

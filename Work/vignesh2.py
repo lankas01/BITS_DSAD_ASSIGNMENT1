@@ -50,48 +50,54 @@ class IPL:
        
        for a in pt:
           if counter > 1 :
-
-            #player = a.replace('\n','').replace(' ','')
-            player = a.strip()            
-            self.associations.append([franchise,player])           
-            
+            player = a.replace('\n','').replace(' ','')   
+            self.associations.append([franchise,player])
           else :
             counter = counter + 1
             
+   #   print ("--------------------------------" , " The Associations are ", "-----------------")             
+   #   print(self.associations)
+   #   print()
+   #   print ("---------------------------------------------------------------------------------")   
+   #   print()
  
    def generatePlayers_fromAssociations(self):
 
-      for tmp_association in self.associations:
+     for tmp_association in self.associations:
          match = 0
          for tmp_player in self.players:
             if (tmp_association[1] == tmp_player) :
                match = match + 1
          if match == 0:  
-               self.players.append(tmp_association[1])   
+               self.players.append(tmp_association[1])
+         # print ("no of player are : " , len(players))
+         # print (players)
+         # print()
+         # print()
+     
       
    def generateGraph_adjencyList(self):
       
-      self.generateAssociations()
+     self.generateAssociations()
   
      # generating franchise and franhiseEdges 
-      for x in self.PlayerTeam:
-         edge_f = []  
-         pt =  x.split("/")   
+     for x in self.PlayerTeam:
+      edge_f = []  
+      pt =  x.split("/")   
       
-         # edge_f.append(pt[0].replace(' ',''))
-         edge_f.append(pt[0].strip())
-         for a in pt[1:len(pt)]:
-            # edge_f.append(a.replace('\n','').replace(' ',''))
-            edge_f.append(a.strip())     
-
-         self.edges.append(edge_f)
-         
+      edge_f.append(pt[0].replace(' ',''))
+      
+      for a in pt[1:len(pt)]:
+      
+            edge_f.append(a.replace('\n','').replace(' ',''))
+            
+      self.edges.append (edge_f) 
      
      
-      # generating player  and playerEdges    
-      self.generatePlayers_fromAssociations()   
+     # generating player  and playerEdges    
+     self.generatePlayers_fromAssociations()   
   
-      for p in self.players:
+     for p in self.players:
          edge_p =[]
          edge_p.append(p)    
          edge_ps = [ x for x in self.associations if x[1] == p ]
@@ -99,7 +105,13 @@ class IPL:
             edge_p.append(a[0])
             
          self.edges.append(edge_p)
-     
+         
+   #   print (".................   All Edges are  ..................") 
+   #   print (self.edges) 
+   #   print()
+   #   print (".................   .................  ..................") 
+   #   print()   
+      
  
    def displayAll(self):
          
@@ -138,8 +150,8 @@ class IPL:
       for x in f:
 
          #--------Call Function displayFranchises --------
-         if(x.find('findFranchise:') >= 0):            
-            plyrNam = x.split("findFranchise:")[1].strip()
+         if(x.find('findFranchise:') >= 0):
+            plyrNam = x.split("findFranchise:")[1].strip().replace(" ","")
             ipl.printList.clear()
             var1 = "\n--------Function displayFranchises --------"
             ipl.printList.insert(len(ipl.printList), var1)
@@ -150,8 +162,8 @@ class IPL:
             ipl.writeIntoOutFile(ipl.printList,"outputPS28.txt","N")
          
          #--------Call Function displayPlayers --------
-         if(x.find('listPlayers:') >= 0):            
-            frnchNam = x.split("listPlayers:")[1].strip()
+         if(x.find('listPlayers:') >= 0):
+            frnchNam = x.split("listPlayers:")[1].strip().replace(" ","")
             ipl.printList.clear()
             var1 = "\n--------Function displayPlayers --------"
             ipl.printList.insert(len(ipl.printList), var1)
@@ -162,10 +174,10 @@ class IPL:
             ipl.writeIntoOutFile(ipl.printList,"outputPS28.txt","N")
 
          #--------Call Function franchiseBuddies --------
-         if(x.find('franchiseBuddies:') >= 0):                        
-            plyrNms = x.split("franchiseBuddies:")[1].strip()
-            plyrNmA = plyrNms.split(":")[0].strip()
-            plyrNmB = plyrNms.split(":")[1].strip()
+         if(x.find('franchiseBuddies:') >= 0):            
+            plyrNms = x.split("franchiseBuddies:")[1].strip().replace(" ","")
+            plyrNmA = plyrNms.split(":")[0]
+            plyrNmB = plyrNms.split(":")[1]
             ipl.printList.clear()
             var1 = "\n--------Function franchiseBuddies --------"
             ipl.printList.insert(len(ipl.printList), var1)
@@ -178,10 +190,10 @@ class IPL:
             ipl.writeIntoOutFile(ipl.printList,"outputPS28.txt","N")
 
          #--------Call Function findPlayerConnect --------
-         if(x.find('playerConnect:') >= 0):            
-            plyrNms = x.split("playerConnect:")[1].strip()
-            plyrNmA = plyrNms.split(":")[0].strip()
-            plyrNmB = plyrNms.split(":")[1].strip()
+         if(x.find('playerConnect:') >= 0):
+            plyrNms = x.split("playerConnect:")[1].strip().replace(" ","")
+            plyrNmA = plyrNms.split(":")[0]
+            plyrNmB = plyrNms.split(":")[1]
             ipl.printList.clear()
             var1 = "\n--------Function findPlayerConnect --------"
             ipl.printList.insert(len(ipl.printList), var1)
@@ -193,6 +205,9 @@ class IPL:
             var1 = ipl.findPlayerConnect(plyrNmA,plyrNmB)
             ipl.printList.insert(len(ipl.printList), var1)
             ipl.writeIntoOutFile(ipl.printList,"outputPS28.txt","N")
+
+
+
 
    def getStringFromList(self,locList):
       tempStr = ""

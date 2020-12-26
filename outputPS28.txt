@@ -16,42 +16,42 @@ GL
 RPS
 
 List of players:
-BenStokes
-JaydevUnadkat
-SanjuSamson
-JofraArcher
-GKrishnappa
-GlennMaxwell
-KLRahul
-RAshwin
-AndrewTye
-MarcusStoinis
-ChrisLynn
-MitchellStarc
-DineshKarthik
-RobinUthappa
-ManishPandey
-ChrisWoakes
-RashidKhan
-ShikharDhawan
-KrunalPandya
-IshanKishan
-KieronPollard
-KedarJadhav
-DwayneBravo
-KarnSharma
-YuzvendraChahal
-UmeshYadav
-KarunNair
+Ben Stokes
+Jaydev Unadkat
+Sanju Samson
+Jofra Archer
+G Krishnappa
+Glenn Maxwell
+KL Rahul
+R Ashwin
+Andrew Tye
+Marcus Stoinis
+Chris Lynn
+Mitchell Starc
+Dinesh Karthik
+Robin Uthappa
+Manish Pandey
+Chris Woakes
+Rashid Khan
+Shikhar Dhawan
+Krunal Pandya
+Ishan Kishan
+Kieron Pollard
+Kedar Jadhav
+Dwayne Bravo
+Karn Sharma
+Yuzvendra Chahal
+Umesh Yadav
+Karun Nair
 
 --------Function displayFranchises --------
-Player name: BenStokes
+Player name: Ben Stokes
 List of Franchises: 
 RR
 RPS
 
 --------Function displayFranchises --------
-Player name: RobinUthappa
+Player name: Robin Uthappa
 List of Franchises: 
 KKR
 
@@ -63,19 +63,19 @@ Player MIXI is not assosciated with any Franchise
 --------Function displayPlayers --------
 Franchise name: RR
 List of Players: 
-BenStokes
-JaydevUnadkat
-SanjuSamson
-JofraArcher
-GKrishnappa
-GlennMaxwell
+Ben Stokes
+Jaydev Unadkat
+Sanju Samson
+Jofra Archer
+G Krishnappa
+Glenn Maxwell
 
 --------Function displayPlayers --------
 Franchise name: SRH
 List of Players: 
-ManishPandey
-RashidKhan
-ShikharDhawan
+Manish Pandey
+Rashid Khan
+Shikhar Dhawan
 
 --------Function displayPlayers --------
 Franchise name: TESTFRANCHISE
@@ -83,10 +83,10 @@ List of Players:
 Invalid Franchise : TESTFRANCHISE or No Player is assosciated with the Franchise
 
 --------Function franchiseBuddies --------
-Player A: KrunalPandya
-Player B: KieronPollard
+Player A: Krunal Pandya
+Player B: Kieron Pollard
 
-Yes , KrunalPandya and KieronPollard are Buddies  via MI
+Yes , Krunal Pandya and Kieron Pollard are Buddies  via MI
 
 --------Function franchiseBuddies --------
 Player A: MAX
@@ -95,19 +95,19 @@ Player B: MIX
 Invalid Player Name MAX or Player is not assoscited with any Franchise
 
 --------Function franchiseBuddies --------
-Player A: BenStokes
-Player B: KrunalPandya
+Player A: Ben Stokes
+Player B: Krunal Pandya
 
-No , BenStokes and KrunalPandya are Not Buddies 
-
---------Function findPlayerConnect --------
-Player A: KedarJadhav
-Player B: IshanKishan
-
-Related: Yes, KedarJadhav > CSK > DwayneBravo > GL > IshanKishan
+No , Ben Stokes and Krunal Pandya are Not Buddies 
 
 --------Function findPlayerConnect --------
-Player A: MitchellStarc
-Player B: GKrishnappa
+Player A: Kedar Jadhav
+Player B: Ishan Kishan
 
-MitchellStarc and GKrishnappa are not connected
+Related: Yes, Kedar Jadhav > CSK > Dwayne Bravo > GL > Ishan Kishan
+
+--------Function findPlayerConnect --------
+Player A: Mitchell Starc
+Player B: G Krishnappa
+
+Mitchell Starc and G Krishnappa are not connected
